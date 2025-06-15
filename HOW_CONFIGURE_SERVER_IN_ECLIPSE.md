@@ -41,6 +41,10 @@ Cliccando sul pulsante *Next >* avccediamo alla finestra per selezionare, tramit
 
 ![Step 6_a](./step_6_a.PNG)
 
+![Step 6_b](./step_6_b.PNG)
+
+![Step 6_c](./step_6_c.PNG)
+
 Cliccando quindi sul pulsante *Finish* abbiamo quindi aggiunto il servlet container *Tomcat* che ci serve per eseguire all'interno dell'IDE le Servlet e JSP.
 
 ![Step 7](./step_7.PNG)
