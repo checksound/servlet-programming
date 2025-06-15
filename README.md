@@ -140,8 +140,10 @@ e il file [*index.html*](./webapp/index.html):
 </body>
 </html>
 ```
-Link come configurare eclipse per sviluppare web app 
-Link come creare una web app in *eclipse*.
+
+Vedi:  
+* [Come configurare eclipse per sviluppare web app](./HOW_CONFIGURE_SERVER_IN_ECLIPSE.md); 
+* [Come creare una web app in *eclipse*](/HOW_CREATE_WEBAPP_IN_ECLIPSE.md);
 
 ### Esempi con l'utilizzo delle annotation
 
