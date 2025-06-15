@@ -655,7 +655,7 @@ Valore contatore: <%=c%> <br>
 </html>
 ```
 
-### Esempi JSP con JSTL
+### Esempi JSP con JSTL (JavaServer Pages Standard Tag Library)
 
 La jsp [*CalcolatriceJSTL.jsp*](./webapp/CalcolatriceJSTL.jsp):
 
