@@ -22,7 +22,7 @@ Ecco creato il progetto con la struttura per la web app:
 
 ## Aggiunta di una servlet
 
-A questo punto aggiungiamo una servlet che chiamimao *WellcomeServlet*: selezionando il progetto *TutorlaWebApp*, premendo iltasto destro, compare un menù; selezioniamo *New* / *Servlet*:  
+A questo punto aggiungiamo una servlet che chiamimao *WellcomeServlet*: selezionando il progetto *TutorlaWebApp*, premendo il tasto destro, compare un menù; selezioniamo *New* / *Servlet*:  
 
 ![Step F](./img/step_F.PNG)
 
@@ -30,7 +30,7 @@ Compare una finestra pre crare una servlet:
 
 ![Step G](./img/step_G.PNG)
 
-In *Class name* inseriamo il nome della servlet:
+In *Class name* inseriamo il nome della servlet, nel nostro caso *WellcomeServlet*:
 
 ![Step H](./img/step_H.PNG)
 
@@ -41,6 +41,18 @@ In *Class name* inseriamo il nome della servlet:
 Al termine dei varei step viene creato lo scheletro della servlet *WellcomeServlet*:  
 
 ![Step K](./img/step_K.PNG)
+
+## Esecuzione della web app
+
+Selezionando il progetto *TutorlaWebApp*, premendo il tasto destro, compare un menù; selezioniamo *Run as* / *Run on Server*:
+
+![Step run 1](./img/step_run_1.PNG)
+
+![Step run 2](./img/step_run_2.PNG)
+
+![Step run 3](./img/step_run_3.PNG)
+
+![Step run 4](./img/step_run_4.PNG)
 
 Ora possiamo accedere alla servlet digitando la seguente url nel browser:
 
