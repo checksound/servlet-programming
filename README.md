@@ -180,32 +180,40 @@ public class Calculator extends HttpServlet {
     protected void printForm(PrintWriter out, String url, String a, String b, String op){
         out.println("<form method=GET action=\""+url+"\">");
         out.print("<input type=text name=a");
-        if (a != null){out.print(" value=\""+a+"\"");}
+        if (a != null)
+			{ out.print(" value=\""+a+"\""); }
         out.println(" />");
         
         out.println("<select name=operazione>");
         
         out.print("<option value=\"somma\"");
-        if ("somma".equals(op)){out.print(" selected");}
+        if ("somma".equals(op))
+			{ out.print(" selected"); }
         out.println(">+</option>");
 
         out.print("<option value=\"sottrazione\"");
-        if ("sottrazione".equals(op)){out.print(" selected");}
+        if ("sottrazione".equals(op))
+			{ out.print(" selected"); }
         out.println(">-</option>");
         
         out.print("<option value=\"moltiplicazione\"");
-        if ("moltiplicazione".equals(op)){out.print(" selected");}
+        if ("moltiplicazione".equals(op))
+			{ out.print(" selected"); }
         out.println(">*</option>");
         
         out.print("<option value=\"divisione\"");
-        if ("divisione".equals(op)){out.print(" selected");}
+        if ("divisione".equals(op))
+			{ out.print(" selected"); }
         out.println(">/</option>");
         
-	out.println("</select>");
+		out.println("</select>");
 
-	out.print("<input type=text name=b");
-        if (b != null){out.print(" value=\""+b+"\"");}
-        out.println(" />");
+		out.print("<input type=text name=b");
+
+        if (b != null)
+			{ out.print(" value=\""+b+"\""); }
+        
+		out.println(" />");
         out.println("<input type=submit name=\"go\" value=\"calcola\"></input>");  
         out.println("</form>");
 
@@ -213,19 +221,27 @@ public class Calculator extends HttpServlet {
 
     protected String getResult(String a, String b, String op){
     	String res="NA";
-    	if (a==null){return res;}
-    	if (b==null){return res;}
-    	if (op==null){return res;}
+    	if (a==null)
+			{ return res; }
+    	if (b==null)
+			{ return res; }
+    	if (op==null)
+			{ return res; }
+
     	float fa=Float.valueOf(a);
     	float fb=Float.valueOf(b);
-    	if ("somma".equals(op)){res=""+(fa+fb);}
-    	if ("sottrazione".equals(op)){res=""+(fa-fb);}
-    	if ("moltiplicazione".equals(op)){res=""+(fa*fb);}
+    	
+		if ("somma".equals(op))
+			{ res= "" + (fa+fb); }
+    	if ("sottrazione".equals(op))
+			{ res= "" + (fa-fb); }
+    	if ("moltiplicazione".equals(op))
+			{ res= "" + (fa*fb); }
     	if ("divisione".equals(op)){
     		if (fb==0){
     			res="division by 0";	
     		} else {
-    			res=""+(fa/fb);
+    			res= "" + (fa/fb);
     		}
     	}
     	return res;
@@ -237,10 +253,12 @@ public class Calculator extends HttpServlet {
 		response.setContentType("text/html");
 		// String url = request.getRequestURL().toString();
 		String url = "." + request.getServletPath();
+
 		String a=request.getParameter("a");
 		String b=request.getParameter("b");
 		String op=request.getParameter("operazione");
-        PrintWriter out = response.getWriter();
+        
+		PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<head>");
         String title = "Calculator";
@@ -258,6 +276,7 @@ public class Calculator extends HttpServlet {
         if (!"NA".equals(res)){
         	out.println("<br>\nThe result is: "+res);
         }
+
         out.println("</body>");
         out.println("</html>");
 	}
@@ -302,18 +321,22 @@ public class DateServlet extends HttpServlet {
      /**
       * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
       */
-     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, 		IOException {
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<html>");
+        
+		PrintWriter out = response.getWriter();
+        
+		out.println("<html>");
         out.println("<meta http-equiv=\"refresh\" content=\"1\">");
         out.println("<head>");
-        String title = "Date and Time";
-        out.println("<title>" + title + "</title>");
+        
+		String title = "Date and Time";
+        
+		out.println("<title>" + title + "</title>");
         out.println("</head>");
         out.println("<body bgcolor=\"white\">");
         out.println("<h1>" + title + "</h1>");
-        out.println("It's "+(new java.util.Date()));
+        out.println("It's " + (new java.util.Date()));
         out.println("</body>");
         out.println("</html>");
 	}
@@ -369,35 +392,48 @@ public class SessionServlet extends HttpServlet {
         String title = "Hello world";
         HttpSession session = request.getSession(true);
         int c;
-        out.println("<html>");
+        
+		out.println("<html>");
         out.println("<head>");
         out.println("<title>" + title + "</title>");
         out.println("</head>");
         out.println("<body bgcolor=\"white\">");
         out.println("<h1>" + title + "</h1>");
-        out.println("Session ID: "+session.getId()+"<br>");
-        out.println("Data creazione sessione: "+(new Date(session.getCreationTime()))+"<br>");
-        out.println("Ultimo accesso alla sessione: "+(new Date(session.getLastAccessedTime()))+"<br>");
-        Operation = request.getParameter("Go");
+        out.println("Session ID: " + 
+			session.getId() + "<br>");
+        out.println("Data creazione sessione: " +
+			(new Date(session.getCreationTime())) + "<br>");
+
+        out.println("Ultimo accesso alla sessione: " + 
+			(new Date(session.getLastAccessedTime())) + "<br>");
+        
+		Operation = request.getParameter("Go");
         if (session.getAttribute("Counter") != null){
                 c=(int) session.getAttribute("Counter");
         } else {
                 c=0;
         }
-        out.println("Operation: "+Operation+"<br>");
-        if ("Add".equals(Operation)){c++;}
-        if ("Remove".equals(Operation)){c--;}
-        session.setAttribute("Counter", c);
-        out.println("Valore contatore: "+c+"<br>");
+        
+		out.println("Operation: " + Operation + "<br>");
+        
+		if ("Add".equals(Operation))
+			{ c++; }
+        if ("Remove".equals(Operation))
+			{ c--; }
+        
+		session.setAttribute("Counter", c);
+        
+		out.println("Valore contatore: " + c + "<br>");
         out.println("<p>");
+
         Enumeration<String> names = session.getAttributeNames();
         while (names.hasMoreElements()) {
             String name = (String) names.nextElement(); 
             String value = session.getAttribute(name).toString();
-            out.println(name + " = "+ value + "<br>");
+            out.println(name + " = " + value + "<br>");
         }
         out.println("</p>");
-        out.println("<form action=\""+ "." + request.getServletPath() + "\" method=POST>");
+        out.println("<form action=\"" + "." + request.getServletPath() + "\" method=POST>");
         out.println("<input type=\"submit\" name=\"Go\" value=\"Add\">");
         out.println("<input type=\"submit\" name=\"Go\" value=\"Remove\">");
         out.println("</form>");
@@ -428,31 +464,48 @@ La jsp [*Calculator1.jsp*](./webapp/Calculator1.jsp):
 <%!    
     protected void printForm(JspWriter out, String url, String a, String b, String op){
 		try {	
-	        out.println("<form method=GET action=\""+url+"\">");
+	        out.println("<form method=GET action=\"" + url + "\">");
 	        out.print("<input type=text name=a");
-	        if (a != null){out.print(" value=\""+a+"\"");}
-	        out.println(" />");        
+
+	        if (a != null)
+				{ out.print(" value=\"" + a + "\""); }
+	        
+			out.println(" />");        
 	        out.println("<select name=operazione>");
 	        out.print("<option value=\"somma\"");
-	        if ("somma".equals(op)){out.print(" selected");}
-	        out.println(">+</option>");
+	        
+			if ("somma".equals(op))
+				{ out.print(" selected"); }
+	        
+			out.println(">+</option>");
 	
 	        out.print("<option value=\"sottrazione\"");
-	        if ("sottrazione".equals(op)){out.print(" selected");}
+	        
+			if ("sottrazione".equals(op))
+				{ out.print(" selected"); }
+
 	        out.println(">-</option>");
 	        
 	        out.print("<option value=\"moltiplicazione\"");
-	        if ("moltiplicazione".equals(op)){out.print(" selected");}
+	        
+			if ("moltiplicazione".equals(op))
+				{ out.print(" selected"); }
+
 	        out.println(">*</option>");
 	        
 	        out.print("<option value=\"divisione\"");
-	        if ("divisione".equals(op)){out.print(" selected");}
-	        out.println(">/</option>");
 	        
-			out.println("</select>");
+			if ("divisione".equals(op))
+				{ out.print(" selected"); }
+
+	        out.println(">/</option>");
+	        out.println("</select>");
 	
 			out.print("<input type=text name=b");
-	        if (b != null){out.print(" value=\""+b+"\"");}
+	        
+			if (b != null)
+				{ out.print(" value=\"" + b + "\""); }
+
 	        out.println(" />");
 	        out.println("<input type=submit name=\"go\" value=\"calcola\"></input>");
 	        out.println("</form>");
@@ -464,19 +517,27 @@ La jsp [*Calculator1.jsp*](./webapp/Calculator1.jsp):
 
     protected String getResult(String a, String b, String op){
     	String res="NA";
-    	if (a==null){return res;}
-    	if (b==null){return res;}
-    	if (op==null){return res;}
+    	if (a==null)
+			{ return res; }
+    	if (b==null)
+			{ return res; }
+    	if (op==null)
+			{ return res; }
+
     	float fa=Float.valueOf(a);
     	float fb=Float.valueOf(b);
-    	if ("somma".equals(op)){res=""+(fa+fb);}
-    	if ("sottrazione".equals(op)){res=""+(fa-fb);}
-    	if ("moltiplicazione".equals(op)){res=""+(fa*fb);}
+		
+    	if ("somma".equals(op))
+			{ res= "" + (fa+fb); }
+    	if ("sottrazione".equals(op))
+			{res= "" + (fa-fb); }
+    	if ("moltiplicazione".equals(op))
+			{res= "" + (fa*fb); }
     	if ("divisione".equals(op)){
     		if (fb==0){
     			res="division by 0";	
     		} else {
-    			res=""+(fa/fb);
+    			res="" + (fa/fb);
     		}
     	}
     	return res;
@@ -484,7 +545,8 @@ La jsp [*Calculator1.jsp*](./webapp/Calculator1.jsp):
     
 %>    
 
-<%		String url = request.getRequestURL().toString();
+<%		
+        String url = request.getRequestURL().toString();
 		String a=request.getParameter("a");
 		String b=request.getParameter("b");
 		String op=request.getParameter("operazione");
@@ -503,9 +565,9 @@ La jsp [*Calculator1.jsp*](./webapp/Calculator1.jsp):
 
         <% printForm(out, url, a, b, op);
         String res=getResult(a, b, op);
-        if (!"NA".equals(res)){%>
-        	<br>The result is: <%=res%>
-        <%}%>
+        if (!"NA".equals(res)){ %>
+        	<br>The result is: <%= res %>
+        <% } %>
 </body>
 </html>
 ```
@@ -523,14 +585,22 @@ La jsp [*Calculator2.jsp*](./webapp/Calculator2.jsp):
 <%!    
     protected String getResult(String a, String b, String op){
     	String res="NA";
-    	if (a==null){return res;}
-    	if (b==null){return res;}
-    	if (op==null){return res;}
+    	if (a==null)
+			{ return res; }
+    	if (b==null)
+			{ return res; }
+    	if (op==null)
+			{ return res; }
+
     	float fa=Float.valueOf(a);
     	float fb=Float.valueOf(b);
-    	if ("somma".equals(op)){res=""+(fa+fb);}
-    	if ("sottrazione".equals(op)){res=""+(fa-fb);}
-    	if ("moltiplicazione".equals(op)){res=""+(fa*fb);}
+    	
+		if ("somma".equals(op))
+			{ res= "" + (fa+fb); }
+    	if ("sottrazione".equals(op))
+			{res= "" + (fa-fb); }
+    	if ("moltiplicazione".equals(op))
+			{res= "" + (fa*fb); }
     	if ("divisione".equals(op)){
     		if (fb==0){
     			res="division by 0";	
@@ -543,14 +613,15 @@ La jsp [*Calculator2.jsp*](./webapp/Calculator2.jsp):
     
 %>    
 
-<%		String url = request.getRequestURL().toString();
+<%		
+        String url = request.getRequestURL().toString();
 		String a=request.getParameter("a");
 		String b=request.getParameter("b");
 		String op=request.getParameter("operazione");
-                String title = "Calculator";
+        String title = "Calculator";
 %>
 <title>
-<%=title%>
+<%= title %>
 </title>
 <head>
 <body>
@@ -558,19 +629,19 @@ La jsp [*Calculator2.jsp*](./webapp/Calculator2.jsp):
 	<form method=GET action=<%=url%> >
 		<input type=text name="a" value="<%=(a != null)?a:"" %>" />
 		<select name=operazione>
-			<option value="somma" <%=("somma".equals(op))?"selected":"" %> >+</option>
-			<option value="sottrazione" <%=("sottrazione".equals(op))?"selected":"" %> >-</option>
-			<option value="moltiplicazione" <%=("moltiplicazione".equals(op))?"selected":"" %> >*</option>
-			<option value="divisione" <%=("divisione".equals(op))?"selected":"" %> >/</option>
+			<option value="somma" <%=("somma".equals(op))? "selected" : "" %> >+</option>
+			<option value="sottrazione" <%=("sottrazione".equals(op))? "selected" : "" %> >-</option>
+			<option value="moltiplicazione" <%=("moltiplicazione".equals(op))? "selected" : "" %> >*</option>
+			<option value="divisione" <%=("divisione".equals(op))? "selected" : "" %> >/</option>
 		</select>
-		<input type=text name="b" value="<%=(b != null)?b:"" %>" />
+		<input type=text name="b" value="<%=(b != null)? b : "" %>" />
 		<input type=submit name="go" value="calcola"></input>
 	</form>
     <%
     String res=getResult(a, b, op);
-    if (!"NA".equals(res)){%>
+    if (!"NA".equals(res)){ %>
     	<br>The result is: <%=res%>
-    <%}%>
+    <% } %>
 </body>
 </html>
 ```
@@ -587,11 +658,11 @@ La jsp [*Date.jsp*](./webapp/Date.jsp):
 <head>
 <%! String title = "Date and Time";%>
 <title>
-<%=title%>
+<%= title %>
 </title>
 </head>
 <body>
-<h1><%=title%></h1>
+<h1><%= title %></h1>
 
 It's <%= (new java.util.Date())%>
 
@@ -611,11 +682,11 @@ La jsp [*Session.jsp*](./webapp/Session.jsp):
 <meta charset="UTF-8">
 <%! String title = "Session Example";%>
 <title>
-<%=title%>
+<%= title %>
 </title>
 </head>
 <body>
-<h1><%=title%></h1>
+<h1><%= title %></h1>
 Session ID: <%=session.getId()%> <br>
 Data creazione sessione: <%=(new Date(session.getCreationTime()))%> <br>
 Ultimo accesso alla sessione: <%=(new Date(session.getLastAccessedTime()))%> <br>
@@ -631,22 +702,24 @@ Ultimo accesso alla sessione: <%=(new Date(session.getLastAccessedTime()))%> <br
 %>
 Operation: <%=Operation%> <br>
 <%
-                if ("Add".equals(Operation)){c++;}
-                if ("Remove".equals(Operation)){c--;}
+                if ("Add".equals(Operation))
+					{c++;}
+                if ("Remove".equals(Operation))
+					{c--;}
                 session.setAttribute("Counter", c);
 %>
-Valore contatore: <%=c%> <br>
+Valore contatore: <%= c %> <br>
 <p>
 <%
         Enumeration<String> names = session.getAttributeNames();
         while (names.hasMoreElements()) {
             String name = (String) names.nextElement(); 
             String value = session.getAttribute(name).toString();
-            out.println(name + " = "+ value + "<br>");
+            out.println(name + " = " + value + "<br>");
         }
 %>
 </p>
-<form action="<%=request.getRequestURI()%>" method=POST>
+<form action="<%= request.getRequestURI() %>" method=POST>
 <input type="submit" name="Go" value="Add">
 <input type="submit" name="Go" value="Remove">
 </form>
@@ -762,3 +835,4 @@ Valore Contatore: <c:out value="${counter}" /><br>
 
 
 [Java Servlets by Example: Lifecycle, Practical Implementations, and Best Practices (2025)](https://www.upgrad.com/blog/servlet-program-in-java/)
+
