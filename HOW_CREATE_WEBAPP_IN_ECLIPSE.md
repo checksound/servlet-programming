@@ -1,5 +1,8 @@
 # Come creare una web app in Eclipse
 
+E' necessario che prima sia stato configurato *Eclipse* aggiungendo un runtime di *Tomcat* per l'esecuzione delle Servlet e JSP. Vedi: 
+* [Come configurare eclipse per sviluppare web app](./HOW_CONFIGURE_SERVER_IN_ECLIPSE.md)
+
 ## Creazione di TutorialWebApp 
 
 Dal menù di *Eclipse* selezioniamo *File* / *New* / *Dynamic Web Project*:  
